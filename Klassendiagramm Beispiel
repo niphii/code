@@ -1,3 +1,14 @@
+Kursive Klasse/Kurive Methoden = abstract class (z.B. public abstract class....
+CapsLock Attribute = final (z.B public final int....
+Dreieckiger Pfeil = Vererben
+Pfeil mit Dach = Komunikation
++ public
+- privat
+~ Paketweit
+# protected
+
+
+
 Aufgabe:   https://postimg.cc/r0Zdn04Y
 
 package cs_17_2_4;
