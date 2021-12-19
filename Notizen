@@ -119,3 +119,28 @@ public class Launcher {
 		Launcher.print(a);
 	}
 }
+
+---------------------------------------------------------------------------------
+
+Noch eine Quersummmeaufgabe:
+
+package cs18_2_1_quersumme;
+
+public class Launcher {
+
+	public static void main(String[] args) {
+
+		System.out.println(Launcher.berechneQuersumme(515));
+		
+	}
+
+	static int berechneQuersumme(int z) {
+		int summe = 0;
+
+		while (z != 0) {
+			summe += z % 10;
+			z = z / 10;
+		}
+		return summe;
+	}
+}
