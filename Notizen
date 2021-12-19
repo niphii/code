@@ -1,0 +1,121 @@
+NOTIZEN
+---------------------------------------------------------------------------------
+package quersummeBerechnen;
+
+import java.util.Scanner;
+
+public class Launcher {
+
+	public static void main(String[] args) {
+		System.out.println("Bitte Zahl eingeben!");
+		Scanner s = new  Scanner(System.in);
+		int i = s.nextInt();
+		
+		int quersumme = 0;
+		int ziffer = 0;
+		while(i > 0) {
+			ziffer = i % 10;
+			quersumme += ziffer;
+			i = i / 10;
+			}
+		System.out.println("Die Quersumme beträgt " + quersumme);
+		s.close();
+		}
+}
+---------------------------------------------------------------------------------
+
+package splitter;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Launcher {
+
+	public static void main(String[] args) {
+		
+		Scanner s = new Scanner(System.in);
+		String q = s.next();
+		String neu[] = q.split("");
+		System.out.println(Arrays.toString(neu));
+		s.close();
+		int quersumme = 0;
+		
+		for(int i = 0; i < neu.length; i++) {
+			quersumme += Integer.parseInt(neu[i]);
+		}
+		System.out.println(quersumme);
+	}
+
+}
+---------------------------------------------------------------------------------
+package ggT;
+
+import java.util.Scanner;
+
+public class Launcher {
+
+	public static void main(String[] args) {
+		
+		int m, n, r;
+		Scanner s = new Scanner(System.in);
+		System.out.println("Zahl 1: ");
+		int zahl1 = s.nextInt();
+		System.out.println("Zahl 2: ");
+		int zahl2 = s.nextInt();
+		
+		if(zahl1 >= zahl2) {
+			m = zahl1;
+			n = zahl2;
+		} else {
+			m = zahl2;
+			n = zahl1;
+		}
+	r = m % n;
+		
+		while(r != 0) {
+			m = n;
+			n = r;
+			r = m % n;
+		}
+		System.out.println("Der ggT von  " + zahl1 + " und " + zahl2 + " ist " + n);
+	}
+
+}
+---------------------------------------------------------------------------------
+package uebung;
+
+public class Launcher {
+	
+	static void fill (char[][] a, char c) {
+		
+	for (int i = 0; i < 3; i++) {
+		
+		for (int j = 0; j < 4; j++) {
+			
+				a[i][j] = c;
+				c++;
+			}
+		}
+	}
+	
+	static void print(char[][] a) {
+		
+		for (char[] i : a) {
+			
+			for (char c : i) {
+				
+				System.out.println(c);
+			}
+		System.out.println();
+		}
+	}
+	
+	public static void main(String[] args) {
+		
+		char [][] a = new char[3][4];
+		char c = 97;
+		
+		Launcher.fill (a, c);
+		Launcher.print(a);
+	}
+}
