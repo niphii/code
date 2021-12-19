@@ -1,0 +1,76 @@
+Aufgabe:   https://postimg.cc/r0Zdn04Y
+
+package cs_17_2_4;
+
+public class Besucher extends Person{
+
+	@Override
+	public String identifizierePerson() {
+		// TODO Auto-generated method stub
+		return "Besucher";
+	}
+}
+
+------------------------------------------
+package cs_17_2_4;
+
+public class Dozent extends Person{
+
+	@Override
+	public String identifizierePerson() {
+		// TODO Auto-generated method stub
+		return "Dozent";
+	}
+}
+-----------------------------------------
+package cs_17_2_4;
+
+public class Launcher {
+
+	public static void main(String[] args) {
+		TagDerOffenenTuer t1 = new TagDerOffenenTuer(100);
+		t1.fuegePersonenHinzu(50, 0);
+		t1.fuegePersonenHinzu(10, 1);
+		System.out.println(t1.toString());
+	}
+
+}
+---------------------------------------------------
+package cs_17_2_4;
+
+public abstract class Person{
+
+	public final int besucher = 0;
+	public final int dozent = 1;
+	
+	public abstract String identifizierePerson();
+}
+-----------------------------------------------------
+package cs_17_2_4;
+
+import java.util.Arrays;
+
+public class TagDerOffenenTuer {
+
+	private Person teilnehmer[];
+	private int anzahl;
+	
+	public TagDerOffenenTuer(int t) {
+		this.teilnehmer = new Person[t];
+	}
+	
+	public void fuegePersonenHinzu(int anzahl, int art) {
+			for (int i = 1; i <= anzahl; i++) {
+				
+				if (art == 0) {
+					teilnehmer[i] = new Besucher();
+				} else if(art == 1) {
+					teilnehmer[i] = new Dozent();
+				}
+			}
+		}
+	
+	public String toString() {
+		return Arrays.toString(teilnehmer);
+	}
+}
