@@ -1,36 +1,125 @@
 <!DOCTYPE html>
-<html lang="de">
+<!--
+Punkteverteilung:
+-Grundgerüst (10P)
+-Bereiche, Überschriften, Tabelle (10P)
+-Formular, onclick (10P)
+-CSS (4P)
+-JS (16P)
+-->
+<!--Grundgerüst-->
+<html lang="de-DE" dir="ltr">
   <head>
+    <!--Metadaten der Webseite-->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Titel</title>
+    <meta name="viewport" initial-scale="1.0">
+    <meta name="author" content="Max Mustermann">
+    <meta name="date" content="18.12.2021">
+    <!--Titel-->
+    <title>Adressbuch</title>
+
+    <!--JS-->
+    <script type="text/javascript">
+      function create(){
+        //alert("Text");
+        //Auslesen der einzelnen Inputfelder ("T1", "T2", "E-Mail") und den Text in den Variablen "Inputfeld1", "Inputfeld2" und "Inputfeld3" speichern.
+        var Inputfeld1 = document.getElementById("T1").value;
+        var Inputfeld2 = document.getElementById("T2").value;
+        var Inputfeld3 = document.getElementById("E-Mail").value;
+
+        //Die Variablen werden in text-nodes umgewandelt (HTML besteht aus: <element-node>text-node</element-node>)
+        var Text1 = document.createTextNode(Inputfeld1);
+        var Text2 = document.createTextNode(Inputfeld2);
+        var Text3 = document.createTextNode(Inputfeld3);
+
+        //Die element-nodes werden erstellt ("td" --> einzelne Tabellendaten)
+        var Tabellendaten1 = document.createElement("td");
+        var Tabellendaten2 = document.createElement("td");
+        var Tabellendaten3 = document.createElement("td");
+
+        //Eine neue Tabellenzeile wird erstellt ("tr")
+        var Tabellenzeile = document.createElement("tr");
+
+        //Die Tabelle mit der ID "Tabelle" wird ausgewählt
+        var Gesamte_tabelle = document.getElementById("Tabelle");
+
+        //Die element-nodes werden mit den text-nodes verbunden (<Tabellendaten1>Text1</Tabellendaten1> --> <td>Inputfeld1</td>)
+        Tabellendaten1.appendChild(Text1);
+        Tabellendaten2.appendChild(Text2);
+        Tabellendaten3.appendChild(Text3);
+
+        //Die 3 Tabellendaten werden in die eine Tabellenzeile eingefügt (--> <tr> <td>Inputfeld1</td> <td>Inputfeld2</td> <td>Inputfeld3</td> </tr>)
+        Tabellenzeile.appendChild(Tabellendaten1);
+        Tabellenzeile.appendChild(Tabellendaten2);
+        Tabellenzeile.appendChild(Tabellendaten3);
+
+        //Die neue Tabellenzeile wird zu der bestehenden Tabelle hinzugefügt
+        Gesamte_tabelle.appendChild(Tabellenzeile);
+      }
+    </script>
+
+    <!--CSS-->
+    <style>
+      table{                          /*Stylen aller Elemente dieser Art*/
+        background-color: yellow;     /*Hintergrundfarbe ändern*/
+        width: 500px;                 /*Breite des Elements festlegen (Angaben z.B. in: px, %, vw)*/
+        height: 50px;                 /*Höhe des Elements festlegen (Angaben z.B. in: px, %, vh)*/
+        border-collapse: collapse;    /*Ränder nebeneinanderliegender th und td zu einen Verbinden*/
+      }
+      th,td{
+        border: 5px solid black       /*Einen 5px dicken, durchgehenden, schwarzen Rand um allen th und td Elementen erstellen*/
+      }
+      #T1{                            /*Stylen eines Elements mit der ID "T1"*/
+        background-color: red;
+      }
+      .Test{                          /*Stylen der Elemente mit der Class "Test"*/
+        background-color: blue;
+        margin: 10px 10px 5px 100px;  /*Legt den Abstand zu anderen Elementen Fest (Angaben z.B. in: px, %, vw) (margin: oben rechts unten links)*/
+        float: right;                 /*Verschiebt das Element an den rechten Bildschirmrand ("float: left" ist auch möglich)*/
+        /*display: flex;                Beide Befehle haben mir geholfen Elemente nebeneinander anzuordnen. Sollte mit "float" aber auch gehen. Wenn meine Befehle benutzt werden, müssen die Breiten der Elemente angepasst werden, damit beide genau nebeneinander passen.
+        flex-wrap: wrap;*/
+      }
+    </style>
+
   </head>
   <body>
 
+    <!--Bereiche, Überschriften, Tabelle:-->
+    <header>                                <!--Header-Bereich-->
+      <h1>Adressbuch</h1>                   <!--Überschrift erster Kategorie-->
+      <img src="book.png" alt="Bild">       <!--Bild (book.png) einfügen. Falls nicht verfügbar, "Bild" schreiben.-->
+    </header>
+
+    <table id="Tabelle">                                 <!--Tabelle erstellen-->
+      <tr>                                  <!--Neue Tabellenzeile erstellen-->
+        <th><h1>Vorname</h1></th>           <!--Tabellenkopf (1. Spalte) (h1 muss nicht geschrieben werden, macht aus den Kopfelementen h1 Überschriften)-->
+        <th><h1>Name</h1></th>              <!--Tabellenkopf (2. Spalte)-->
+        <th><h1>E-Mail</h1></th>            <!--Tabellenkopf (3. Spalte)-->
+      </tr>
+      <tr>
+        <td>Max</td>                        <!--Tabellendaten (1. Spalte)-->
+        <td>Mustermann</td>                 <!--Tabellendaten (2. Spalte)-->
+        <td>muster@muster.com</td>          <!--Tabellendaten (3. Spalte)-->
+      </tr>
+    </table>
+
+    <!--Formular, onclick:-->
+    <h2>Neue Adresse</h2>                       <!--Überschrift zweiter Kategorie-->
+    <form>                                      <!--Eingabeform erstellen (für input und button)-->
+      <label for="T1">Text1</label>             <!--Label, welches mit for="T1" den Element mit der ID "T1" zugeordnet ist.-->
+      <input type="text" id="T1" name="T1">     <!--Input des Typs "text", mit der ID "T1"-->
+      <label for="T2">Text2</label>
+      <input type="text" id="T2" name="T2">
+      <label for="E-Mail">E-Mail</label>
+      <input type="email" id="E-Mail" name="E-Mail" placeholder="muster@muster.com">  <!--Input des Typs "email", mit einem Platzhalter (Steht leicht sichtbar im Input Feld)-->
+      <button type="button" name="button" onclick="create();">Erstellen</button>      <!--Button mit der onclick, welches die  JS Funktion "create()" beim drücken aufruft.-->
+    </form>
+
+    <!--Bereiche, Überschriften, Tabelle:-->
+    <footer>                                      <!--Footer-Bereich-->
+      <hr>                                        <!--Vertikale Trennlinie-->
+      <br>                                        <!--Zeilenumbruch-->
+      <p>Letzten Aktualisierung: 19.12.2021</p>   <!--Fließtext-->
+    </footer>
   </body>
 </html>
-
-
-
-
-Button klickevent ->
-
-<input type="text" name="Vorname" id="vorname"> //Textfeld
-<button onklick="klicken()">Hier Klicken!</button>
-
-
-<script>
-
-function klicken() {
-
-var variable1 = document.getElementById("vorname").value;
-
-var tbl = document.createElement("table"); // tabelle erstellen
-var row = document.createElement("tr"); //tabellen Reihe erstellen
-var eintrag = createTextNode(variable1); //Texteintrag erstellen mit dem aus dem input
-var name = document.createElement("td"); //eintrag erstellen
-
-name.appendChild(eintrag);
-row.appendChild(name);
-}
-</script>
