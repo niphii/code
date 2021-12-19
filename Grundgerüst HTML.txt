@@ -9,3 +9,28 @@
 
   </body>
 </html>
+
+
+
+
+Button klickevent ->
+
+<input type="text" name="Vorname" id="vorname"> //Textfeld
+<button onklick="klicken()">Hier Klicken!</button>
+
+
+<script>
+
+function klicken() {
+
+var variable1 = document.getElementById("vorname").value;
+
+var tbl = document.createElement("table"); // tabelle erstellen
+var row = document.createElement("tr"); //tabellen Reihe erstellen
+var eintrag = createTextNode(variable1); //Texteintrag erstellen mit dem aus dem input
+var name = document.createElement("td"); //eintrag erstellen
+
+name.appendChild(eintrag);
+row.appendChild(name);
+}
+</script>
